@@ -1,9 +1,9 @@
-;
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import ProductList from "./pages/ProductList"; // 상품 목록 추가
+import ProductForm from "./pages/ProductForm"; // ✅ 상품 등록 추가
 import Toast from "./components/Toast";
 import "./index.css";
 
@@ -15,7 +15,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/products" element={<ProductList />} /> {/* ✅ 상품 목록 라우트 */}
+          <Route path="/products" element={<ProductList />} /> {/* ✅ 상품 목록 */}
+          <Route path="/add-product" element={<ProductForm />} /> {/* ✅ 상품 등록 */}
         </Routes>
         <Toast message="Welcome to MStore!" />
       </div>

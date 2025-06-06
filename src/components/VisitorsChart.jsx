@@ -1,36 +1,35 @@
+// src/components/VisitorsChart.jsx
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid,
-  Tooltip, ResponsiveContainer
-} from 'recharts';
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+  CartesianGrid,
+} from "recharts";
 
 const data = [
-  { day: '월', visits: 1200 },
-  { day: '화', visits: 2100 },
-  { day: '수', visits: 800 },
-  { day: '목', visits: 1600 },
-  { day: '금', visits: 2000 },
-  { day: '토', visits: 2500 },
-  { day: '일', visits: 3000 },
+  { date: "월", 방문자: 200 },
+  { date: "화", 방문자: 400 },
+  { date: "수", 방문자: 300 },
+  { date: "목", 방문자: 500 },
+  { date: "금", 방문자: 700 },
+  { date: "토", 방문자: 450 },
+  { date: "일", 방문자: 620 },
 ];
 
 export default function VisitorsChart() {
   return (
-    <div className="bg-white dark:bg-zinc-800 p-6 rounded-2xl shadow mt-8">
-      <h2 className="text-lg font-bold mb-4 text-gray-800 dark:text-white">
-        📈 주간 방문자 수
-      </h2>
-      <ResponsiveContainer width="100%" height={250}>
+    <div className="bg-white shadow rounded-2xl p-6 h-96">
+      <h2 className="text-lg font-semibold mb-4">📈 주간 방문자 추이</h2>
+      <ResponsiveContainer width="100%" height="80%">
         <LineChart data={data}>
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="day" stroke="#8884d8" />
+          <XAxis dataKey="date" />
           <YAxis />
           <Tooltip />
-          <Line
-            type="monotone"
-            dataKey="visits"
-            stroke="#8884d8"
-            strokeWidth={2}
-          />
+          <Line type="monotone" dataKey="방문자" stroke="#3b82f6" strokeWidth={2} />
         </LineChart>
       </ResponsiveContainer>
     </div>

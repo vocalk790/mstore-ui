@@ -1,45 +1,47 @@
+
+// src/components/ProductTable.jsx
 import React from 'react';
 
 const ProductTable = ({ products }) => {
   return (
-    <div className="bg-white rounded-2xl shadow-md p-4">
-      <h2 className="text-lg font-bold mb-4">실시간 상품 리스트</h2>
-      <div className="overflow-x-auto">
-        <table className="min-w-full text-sm text-left">
-          <thead className="bg-gray-100">
+    <div className="overflow-x-auto rounded-xl shadow-md bg-white">
+      <table className="w-full text-left border-separate border-spacing-y-2">
+        <thead>
+          <tr className="text-sm text-grayText bg-gray-50">
+            <th className="px-4 py-3">상품명</th>
+            <th className="px-4 py-3">매입가</th>
+            <th className="px-4 py-3">판매가</th>
+            <th className="px-4 py-3">수익금</th>
+            <th className="px-4 py-3">수익률</th>
+          </tr>
+        </thead>
+        <tbody>
+          {products.length === 0 ? (
             <tr>
-              <th className="px-4 py-2">상품명</th>
-              <th className="px-4 py-2">매입가</th>
-              <th className="px-4 py-2">판매가</th>
-              <th className="px-4 py-2">수익금</th>
-              <th className="px-4 py-2">수익률</th>
-              <th className="px-4 py-2">회전율</th>
-              <th className="px-4 py-2">수량</th>
+              <td colSpan="5" className="text-center text-grayText py-6">
+                등록된 상품이 없습니다.
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {products?.length > 0 ? (
-              products.map((item, index) => (
-                <tr key={index} className="border-t">
-                  <td className="px-4 py-2">{item.name}</td>
-                  <td className="px-4 py-2">{item.buyPrice.toLocaleString()} 원</td>
-                  <td className="px-4 py-2">{item.sellPrice.toLocaleString()} 원</td>
-                  <td className="px-4 py-2 text-green-600">{item.profit.toLocaleString()} 원</td>
-                  <td className="px-4 py-2">{item.profitRate}%</td>
-                  <td className="px-4 py-2">{item.turnoverRate}</td>
-                  <td className="px-4 py-2">{item.quantity}</td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan="7" className="text-center text-gray-400 py-6">
-                  상품 정보가 없습니다.
+          ) : (
+            products.map((item) => (
+              <tr
+                key={item.id}
+                className="bg-gray-50 hover:bg-gray-100 transition rounded shadow-sm"
+              >
+                <td className="px-4 py-3 rounded-l-lg">{item.name}</td>
+                <td className="px-4 py-3">₩{item.cost.toLocaleString()}</td>
+                <td className="px-4 py-3">₩{item.price.toLocaleString()}</td>
+                <td className="px-4 py-3 text-green-600 font-medium">
+                  ₩{(item.price - item.cost).toLocaleString()}
+                </td>
+                <td className="px-4 py-3 rounded-r-lg text-blue-500">
+                  {(((item.price - item.cost) / item.cost) * 100).toFixed(1)}%
                 </td>
               </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
+            ))
+          )}
+        </tbody>
+      </table>
     </div>
   );
 };

@@ -1,44 +1,57 @@
 // src/pages/LoginForm.jsx
-import { useState } from "react";
+import React, { useState } from 'react';
 
-export default function LoginForm({ onLogin }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const LoginForm = () => {
+  const [form, setForm] = useState({ email: '', password: '' });
 
-  const handleSubmit = e => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (!email || !password) return alert("모든 필드를 입력하세요.");
-    onLogin({ email, password }); // 부모 컴포넌트에서 처리
+    alert(`로그인 시도: ${form.email}`);
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="flex min-h-screen items-center justify-center bg-gray-50">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-8 rounded shadow-md w-full max-w-sm"
+        className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md space-y-6"
       >
-        <h2 className="text-2xl font-semibold mb-6 text-center">로그인</h2>
-        <input
-          type="email"
-          placeholder="이메일"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          className="w-full p-3 border rounded mb-4"
-        />
-        <input
-          type="password"
-          placeholder="비밀번호"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          className="w-full p-3 border rounded mb-4"
-        />
+        <h2 className="text-2xl font-bold text-center text-dark">M스토어 로그인</h2>
+        <div>
+          <label className="block text-sm text-grayText mb-1">이메일</label>
+          <input
+            type="email"
+            name="email"
+            value={form.email}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary"
+          />
+        </div>
+        <div>
+          <label className="block text-sm text-grayText mb-1">비밀번호</label>
+          <input
+            type="password"
+            name="password"
+            value={form.password}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary"
+          />
+        </div>
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white p-3 rounded hover:bg-blue-600"
+          className="w-full bg-primary text-white py-2 rounded-lg hover:bg-opacity-90 transition"
         >
           로그인
         </button>
       </form>
     </div>
   );
-}
+};
+
+export default LoginForm;

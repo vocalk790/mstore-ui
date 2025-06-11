@@ -1,26 +1,16 @@
+// src/components/SummaryCards.jsx
 import React from 'react';
 
-const SummaryCards = ({ data }) => {
-  const cards = [
-    { label: '시작금액', value: data?.startAmount ?? 0, unit: '원' },
-    { label: '총 매입가', value: data?.buyAmount ?? 0, unit: '원' },
-    { label: '총 매출가', value: data?.sellAmount ?? 0, unit: '원' },
-    { label: '수익률', value: `${data?.profitRate ?? 0}%`, unit: '' },
-    { label: '수익금', value: data?.profit ?? 0, unit: '원' },
-    { label: '현재 잔액', value: data?.balance ?? 0, unit: '원' },
-  ];
-
+const SummaryCards = ({ title, value, icon }) => {
   return (
-    <div className="grid grid-cols-3 gap-4 mb-6">
-      {cards.map((card, index) => (
-        <div
-          key={index}
-          className="bg-white p-4 rounded-2xl shadow-md flex flex-col justify-center items-center"
-        >
-          <div className="text-gray-500 text-sm mb-1">{card.label}</div>
-          <div className="text-xl font-bold">{card.value.toLocaleString()} {card.unit}</div>
+    <div className="bg-gradient-to-br from-primary to-accent text-white rounded-2xl p-6 shadow-xl transition-transform hover:scale-105">
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-sm font-light tracking-wide opacity-80">{title}</p>
+          <h2 className="text-2xl font-semibold mt-1 tracking-tight">{value}</h2>
         </div>
-      ))}
+        {icon && <div className="text-3xl opacity-60">{icon}</div>}
+      </div>
     </div>
   );
 };

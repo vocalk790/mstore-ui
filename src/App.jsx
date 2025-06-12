@@ -1,22 +1,18 @@
+// 📁 /src/App.jsx
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import ThumbnailGenerator from "./pages/ThumbnailGenerator"; // ✅ 추가
 
-// 페이지 컴포넌트 import
-import Dashboard from "./pages/Dashboard";
-import ComponentsPreview from "./pages/ComponentsPreview";
-
-const App = () => {
+function App() {
   return (
     <Router>
       <Routes>
-        {/* 대시보드 */}
-        <Route path="/" element={<Dashboard />} />
-
-        {/* 컴포넌트 프리뷰 */}
-        <Route path="/components-preview" element={<ComponentsPreview />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/thumbnail-generator" element={<ThumbnailGenerator />} /> {/* ✅ 썸네일 경로 추가 */}
       </Routes>
     </Router>
   );
-};
+}
 
 export default App;

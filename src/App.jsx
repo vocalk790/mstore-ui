@@ -1,17 +1,10 @@
-// 📁 /src/App.jsx
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import ThumbnailGenerator from "./pages/ThumbnailGenerator"; // ✅ 추가
+import React from 'react';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/thumbnail-generator" element={<ThumbnailGenerator />} /> {/* ✅ 썸네일 경로 추가 */}
-      </Routes>
-    </Router>
+    <div className="min-h-screen flex items-center justify-center bg-white text-2xl text-blue-600">
+      ✅ 올바르게 Tailwind CSS가 적용된 화면입니다!
+    </div>
   );
 }
 

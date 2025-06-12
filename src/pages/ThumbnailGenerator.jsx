@@ -1,65 +1,50 @@
-// 📁 /src/pages/ThumbnailGenerator.jsx
+// /src/pages/ThumbnailGenerator.jsx
 import React, { useState } from "react";
 
 function ThumbnailGenerator() {
-  const [url, setUrl] = useState("");
-  const [thumbnail, setThumbnail] = useState(null);
+  const [productUrl, setProductUrl] = useState("");
+  const [thumbnailUrl, setThumbnailUrl] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const handleGenerate = async () => {
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:8000/generate-thumbnail", {
+      const response = await fetch("http://localhost:8000/api/generate-thumbnail", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ url }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: productUrl }),
       });
-
-      if (response.ok) {
-        const blob = await response.blob();
-        const imageUrl = URL.createObjectURL(blob);
-        setThumbnail(imageUrl);
-      } else {
-        alert("❌ 썸네일 생성 실패");
-      }
+      const data = await response.json();
+      setThumbnailUrl(data.thumbnail_url);
     } catch (error) {
-      console.error(error);
-      alert("❌ 요청 중 오류 발생");
+      alert("썸네일 생성에 실패했습니다.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="p-6 max-w-xl mx-auto">
-      <h2 className="text-2xl font-bold mb-4">🖼️ 썸네일 자동 생성기</h2>
-
+    <div className="max-w-xl mx-auto py-16 px-4">
+      <h2 className="text-3xl font-bold mb-4">🧠 썸네일 자동 생성기</h2>
       <input
         type="text"
-        placeholder="쇼핑몰 상품 URL을 입력하세요"
-        value={url}
-        onChange={(e) => setUrl(e.target.value)}
-        className="w-full border p-2 mb-4 rounded"
+        placeholder="상품 URL을 입력하세요"
+        className="w-full p-3 border rounded mb-4"
+        value={productUrl}
+        onChange={(e) => setProductUrl(e.target.value)}
       />
-
       <button
         onClick={handleGenerate}
-        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full"
         disabled={loading}
+        className="w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-700 transition"
       >
-        {loading ? "생성 중..." : "썸네일 생성하기"}
+        {loading ? "생성 중..." : "썸네일 생성"}
       </button>
 
-      {thumbnail && (
+      {thumbnailUrl && (
         <div className="mt-6">
-          <h3 className="font-semibold mb-2">📸 생성된 썸네일:</h3>
-          <img
-            src={thumbnail}
-            alt="썸네일"
-            className="w-full border rounded shadow-md"
-          />
+          <p className="mb-2 text-sm text-gray-500">썸네일 미리보기:</p>
+          <img src={thumbnailUrl} alt="Generated Thumbnail" className="rounded shadow" />
         </div>
       )}
     </div>

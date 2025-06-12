@@ -1,39 +1,35 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Home, Settings, User, Wallet } from 'lucide-react';
+// ✅ M스토어 고급 UI 적용 - Sidebar 컴포넌트 추가
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import { LayoutGrid, ShoppingCart, Wallet, Settings } from "lucide-react";
 
-const Sidebar = () => {
+export default function Sidebar() {
   const location = useLocation();
-  const isActive = (path) => location.pathname === path;
 
   const navItems = [
-    { path: '/', icon: <Home size={18} />, label: '대시보드' },
-    { path: '/settings', icon: <Settings size={18} />, label: '설정' },
-    { path: '/mywallet', icon: <Wallet size={18} />, label: '지갑' },
-    { path: '/users', icon: <User size={18} />, label: '사용자' },
+    { label: "상품", path: "/products", icon: <LayoutGrid /> },
+    { label: "주문", path: "/orders", icon: <ShoppingCart /> },
+    { label: "지갑", path: "/wallet", icon: <Wallet /> },
+    { label: "관리자", path: "/admin", icon: <Settings /> },
   ];
 
   return (
-    <aside className="w-64 h-full bg-white border-r hidden md:flex flex-col justify-between p-4">
-      <nav className="space-y-2">
-        {navItems.map((item) => (
+    <aside className="hidden md:flex flex-col w-56 bg-slate-50 h-screen px-4 py-6 shadow-xl rounded-tr-3xl rounded-br-3xl">
+      <h2 className="text-xl font-bold text-indigo-700 mb-6">📂 관리자 메뉴</h2>
+      <nav className="flex flex-col gap-3">
+        {navItems.map(({ label, path, icon }) => (
           <Link
-            key={item.path}
-            to={item.path}
-            className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all ${
-              isActive(item.path)
-                ? 'bg-gray-100 text-blue-600 font-semibold'
-                : 'text-gray-600 hover:bg-gray-50'
+            key={path}
+            to={path}
+            className={`flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-indigo-100 transition ${
+              location.pathname === path ? "bg-indigo-100 text-indigo-700 font-semibold" : "text-gray-700"
             }`}
           >
-            {item.icon}
-            <span>{item.label}</span>
+            {icon}
+            <span>{label}</span>
           </Link>
         ))}
       </nav>
-      <div className="text-xs text-gray-400 px-3 mt-4">© 2025 SignMoney</div>
     </aside>
   );
-};
-
-export default Sidebar;
+}

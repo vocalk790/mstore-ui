@@ -1,13 +1,13 @@
 {
   "name": "mstore-ui",
   "version": "1.0.0",
-  "description": "MStore UI with Vite + TailwindCSS",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@vitejs/plugin-react": "^4.5.2",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",

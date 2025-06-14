@@ -1,21 +1,16 @@
 {
-  "name": "mstore-deploy",
+  "name": "mstore-ui",
   "version": "1.0.0",
-  "description": "MStore UI Netlify deploy",
+  "description": "MStore UI with Vite + TailwindCSS",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.10",
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.5",
-    "tailwindcss": "^3.4.17",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
     "vite": "^5.4.0"
   }
 }

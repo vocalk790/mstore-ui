@@ -1,7 +1,7 @@
-// mstore-ui/postcss.config.js
 module.exports = {
-  plugins: [
-    require('tailwindcss'),
-    require('autoprefixer'),
-  ],
-};
+  plugins: {
+    '@tailwindcss/postcss': require('@tailwindcss/postcss'),
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}

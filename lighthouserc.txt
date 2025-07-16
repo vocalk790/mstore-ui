@@ -1,0 +1,15 @@
+/* mstore-ui/lighthouserc.json */
+{
+  "ci": {
+    "collect": {
+      "staticDistDir": "storybook-static"
+    },
+    "assert": {
+      "assertions": {
+        "unused-javascript": ["warn", { "maxLength": 1 }],
+        "render-blocking-resources": ["warn", { "maxLength": 1 }],
+        "render-blocking-insight": "warn"
+      }
+    }
+  }
+}

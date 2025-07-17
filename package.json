@@ -15,10 +15,7 @@
     "doctor:ci": "npm run doctor && npm run build:storybook",
     "fix": "node scripts/fix-project.mjs",
     "sync:push": "git pull --rebase origin main && git push -u origin main",
-    // 아래 줄을 반드시 추가
     "auto-fix-push": "node scripts/auto-fix-and-push.mjs"
   },
-  "devDependencies": {
-    // … 나머지
-  }
+  "devDependencies": {}
 }

@@ -12,11 +12,13 @@
     "test:ui": "playwright test",
     "lint": "npx eslint \"src/**/*.{ts,tsx}\" --cache --fix",
     "typecheck": "npx tsc -p tsconfig.json --noEmit",
-    "doctor": "npm-run-all --serial lint typecheck test",
+    "doctor": "npx npm-run-all --serial lint typecheck test",
     "doctor:ci": "npm run doctor && npm run build:storybook",
     "fix": "node scripts/fix-project.mjs",
     "sync:push": "git pull --rebase origin main && git push -u origin main",
     "auto-fix-push": "node scripts/auto-fix-and-push.mjs"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
 }

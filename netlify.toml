@@ -1,7 +1,11 @@
-[build]
-  base = "."
-  command = "npm run build"
-  publish = "dist"
+# C:\Users\vocal\Desktop\allstore.ui\netlify.toml
 
-[functions]
-  directory = "netlify/functions"
+[build]
+  base    = "."              # ↩︎ 루트를 기준으로 합니다.
+  command = "npm run build"
+  publish = "dist"           # ↩︎ 빌드 결과물이 dist/ 폴더에 나옵니다.
+  # functions = "netlify/functions"  # 함수가 있다면 주석 해제
+
+[context.production.environment]
+  NETLIFY_AUTH_TOKEN = "nfp_f7bNFQWs1sAZuQ8gqLzFRbg9Ne5pbwsAce39"
+  NETLIFY_SITE_ID    = "e4667f5d-93f7-45a7-9254-b85005580cde"

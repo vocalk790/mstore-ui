@@ -1,24 +1,28 @@
 {
-  "name": "mstore-ui",
-  "version": "0.1.0",
+  "name": "allstore-ui",
+  "version": "1.0.0",
+  "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "storybook": "storybook dev -p 6006",
-    "build:storybook": "storybook build",
-    "setup:ui": "npm run lint && npm run typecheck && npm run test:ui",
-    "test": "vitest run --reporter=verbose",
-    "test:ui": "playwright test",
-    "lint": "npx eslint \"src/**/*.{ts,tsx}\" --cache --fix",
-    "typecheck": "npx tsc -p tsconfig.json --noEmit",
-    "doctor": "npx npm-run-all --serial lint typecheck test",
-    "doctor:ci": "npm run doctor && npm run build:storybook",
-    "fix": "node scripts/fix-project.mjs",
-    "sync:push": "git pull --rebase origin main && git push -u origin main",
-    "auto-fix-push": "node scripts/auto-fix-and-push.mjs"
+    "build": "tsc && vite build",
+    "serve": "vite preview",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "autopush": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/autopush.ps1",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "npm-run-all": "^4.1.5"
+    "@vitejs/plugin-react": "^4.0.0",
+    "autoprefixer": "^10.4.21",
+    "husky": "^9.1.7",
+    "postcss": "^8.5.6",
+    "storybook": "^7.0.0",
+    "tailwindcss": "3.2",
+    "typescript": "^5.0.0",
+    "vite": "^4.0.0"
   }
 }

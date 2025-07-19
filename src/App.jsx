@@ -8,7 +8,7 @@ export default function App() {
         Negastore Dashboard (HMR OK!)
       </h1>
       <p className="text-lg">
-        환영합니다! Negastore UI 개발을 시작하세요. <strong>자동 훅 테스트:</strong> 이 문장을 수정하면 즉시 반영됩니다.
+        환영합니다! Negastore UI 개발을 알립니다. <strong>자동 훅 테스트:</strong> 이 문장을 수정하면 즉시 반영됩니다.
       </p>
     </div>
   );

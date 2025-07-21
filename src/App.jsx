@@ -1,16 +1,15 @@
-// 📄 mstore-ui/src/App.jsx
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home"; // ✅ 실제 파일 이름이 'Home.jsx'일 경우
+// src/App.jsx
+import React from 'react';
 
-function App() {
+export default function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </Router>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
+      <h1 className="text-4xl font-bold text-blue-600 mb-4">
+        <h1>Negastore Dashboard (autopush OK!)</h1>
+      </h1>
+      <p className="text-lg">
+        환영합니다! Negastore UI 개발을 알립니다. <strong>자동 훅 테스트:</strong> 이 문장을 수정하면 즉시 바동화가 진행됩니다.
+      </p>
+    </div>
   );
 }
-
-export default App;

@@ -1,0 +1,23 @@
+{
+  "Header 1": {
+    "fontFamily": "Work Sans",
+    "fontSize": 34,
+    "fontWeight": 700,
+    "lineHeightPx": 39.88199996948242,
+    "letterSpacing": -0.68
+  },
+  "Header 2": {
+    "fontFamily": "Work Sans",
+    "fontSize": 20,
+    "fontWeight": 700,
+    "lineHeightPx": 23.459999084472656,
+    "letterSpacing": -0.4
+  },
+  "Body": {
+    "fontFamily": "Work Sans",
+    "fontSize": 13,
+    "fontWeight": 400,
+    "lineHeightPx": 15.24899959564209,
+    "letterSpacing": -0.26
+  }
+}

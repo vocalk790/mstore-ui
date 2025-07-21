@@ -1,0 +1,7 @@
+/* Button.css – Tailwind + CSS 변수 */
+.ui-button {@apply inline-flex items-center justify-center font-medium transition-colors;}
+.ui-button--variant-primary {@apply bg-brand-primary text-white hover:bg-brand-primary-600;}
+.ui-button--variant-secondary {@apply bg-neutral-100 text-neutral-900 hover:bg-neutral-200;}
+.ui-button--size-sm {@apply h-8 px-3 text-sm;}
+.ui-button--size-md {@apply h-10 px-4 text-sm;}
+.ui-button--size-lg {@apply h-12 px-6 text-base;}

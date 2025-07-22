@@ -1,7 +1,7 @@
 [build]
   command = "npm run build"
   publish = "dist"
-  # base = "."  # 굳이 안 써도 됨. 쓴다면 이렇게 점(.)으로
+  # base = "."   # ← 절대 "allstore-ui" 넣지 말 것. 필요 없으면 이 줄 자체를 지워도 됩니다.
 
 [build.environment]
   NODE_VERSION = "20"
